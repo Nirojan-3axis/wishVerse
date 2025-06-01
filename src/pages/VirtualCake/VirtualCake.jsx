@@ -205,17 +205,17 @@ const StatusIndicator = ({ micPermission, candlesLit, blowDetected }) => {
   if (!micPermission || !candlesLit) return null;
 
   return (
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30">
-      <div className={`px-6 py-4 rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
+    <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 px-4 w-full max-w-md">
+      <div className={`px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
         blowDetected 
           ? 'bg-green-500/20 border-green-400/50 text-green-300' 
           : 'bg-blue-500/20 border-blue-400/50 text-blue-300'
       }`}>
-        <div className="flex items-center space-x-3">
-          <div className={`w-3 h-3 rounded-full animate-pulse ${
+        <div className="flex items-center justify-center space-x-2 sm:space-x-3">
+          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse ${
             blowDetected ? 'bg-green-400' : 'bg-blue-400'
           }`}></div>
-          <span className="font-medium">
+          <span className="font-medium text-sm sm:text-base text-center">
             {blowDetected ? '💨 Blowing detected!' : '🎤 Blow to extinguish candles'}
           </span>
         </div>
@@ -404,12 +404,12 @@ const VirtualCake = () => {
       </div>
 
       {/* Modern UI Components */}
-      <ControlPanel 
+      {/* <ControlPanel 
         micPermission={micPermission}
         candlesLit={candlesLit}
         onResetCandles={handleResetCandles}
         blowDetected={blowDetected}
-      />
+      /> */}
 
       <StatusIndicator 
         micPermission={micPermission}
