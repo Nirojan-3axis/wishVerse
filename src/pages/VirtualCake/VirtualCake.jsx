@@ -255,7 +255,7 @@ const StatusIndicator = ({ micPermission, candlesLit, blowDetected }) => {
             blowDetected ? 'bg-green-400' : 'bg-blue-400'
           }`}></div>
           <span className="font-medium text-sm sm:text-base text-center">
-            {blowDetected ? '💨 Blowing detected!' : '🎤 Blow to extinguish candles'}
+            {blowDetected ? 'Blowing detected!' : 'Blow to extinguish candles'}
           </span>
         </div>
       </div>
