@@ -229,10 +229,18 @@ const MagicalParticles = ({ candlesLit }) => {
 const ImageHangers = ({ count = 6 }) => {
   const frameGroupRef = useRef();
   
-  // Load the image texture
-  const images = [useLoader(THREE.TextureLoader, img1), useLoader(THREE.TextureLoader, img2), useLoader(THREE.TextureLoader, img3), useLoader(THREE.TextureLoader, img4), useLoader(THREE.TextureLoader, img5), useLoader(THREE.TextureLoader, img6)];
-  // Ensure count is within limits (min: 0, max: 8)
-  const limitedCount = Math.max(0, Math.min(8, count));
+  // Load all 6 image textures
+  const images = [
+    useLoader(THREE.TextureLoader, img1), 
+    useLoader(THREE.TextureLoader, img2), 
+    useLoader(THREE.TextureLoader, img3), 
+    useLoader(THREE.TextureLoader, img4), 
+    useLoader(THREE.TextureLoader, img5), 
+    useLoader(THREE.TextureLoader, img6)
+  ];
+  
+  // Ensure count doesn't exceed available images
+  const limitedCount = Math.max(0, Math.min(6, count));
   
   useFrame((state) => {
     if (frameGroupRef.current) {
@@ -241,122 +249,43 @@ const ImageHangers = ({ count = 6 }) => {
     }
   });
 
-  // Function to generate evenly spaced frames with random heights
-  const generateRandomFrames = (frameCount) => {
-    // Early return if no frames to generate
+  // Simplified frame generation function
+  const generateFrames = (frameCount) => {
     if (frameCount === 0) return [];
     
     const frames = [];
-    const themes = ["🎂", "👨‍👩‍👧‍👦", "🎪", "🎉", "📸", "🌟", "💝", "🎈", "🌸", "⭐"];
-    const colors = ["#8B4513", "#2F4F4F", "#4A4A4A", "#654321", "#696969", "#5D4037", "#3E2723", "#424242"];
+    const colors = ["#8B4513", "#2F4F4F", "#4A4A4A", "#654321", "#696969", "#5D4037"];
     
-    // Calculate frames per wall - now distributing across 4 walls
-    const framesPerWall = Math.floor(frameCount / 4); // Distribute across 4 walls (back, left, right, front)
-    const extraFrames = frameCount % 4;
+    // Define fixed positions for up to 6 frames around the room
+    const positions = [
+      // Back wall
+      { pos: [-3, 2.5, -6.8], rot: [0, 0, 0] },
+      { pos: [3, 2.5, -6.8], rot: [0, 0, 0] },
+      // Left wall  
+      { pos: [-6.8, 2.5, -2], rot: [0, Math.PI / 2, 0] },
+      // Right wall
+      { pos: [6.8, 2.5, -2], rot: [0, -Math.PI / 2, 0] },
+      // Additional back wall positions
+      { pos: [0, 3.5, -6.8], rot: [0, 0, 0] },
+      { pos: [-6.8, 3.5, 2], rot: [0, Math.PI / 2, 0] }
+    ];
     
-    let frameIndex = 0;
-    
-    // Back wall frames - evenly spaced horizontally
-    const backWallFrames = framesPerWall + (extraFrames > 0 ? 1 : 0);
-    for (let i = 0; i < backWallFrames; i++) {
-      const spacing = 10 / (backWallFrames + 1); // Distribute across 10 units width
-      const xPos = -5 + spacing * (i + 1); // Start from -5 and space evenly
-      
+    for (let i = 0; i < frameCount; i++) {
+      const position = positions[i];
       frames.push({
-        position: [
-          xPos,
-          1.5 + Math.random() * 3, // Random height between 1.5 and 4.5
-          -6.8 + Math.random() * 0.3 // Slight depth variation
-        ],
-        rotation: [0, Math.random() * 0.2 - 0.1, 0], // Subtle random tilt
-        size: [
-          0.9 + Math.random() * 0.4, // width: 0.9 to 1.3
-          0.8 + Math.random() * 0.5  // height: 0.8 to 1.3
-        ],
-        color: colors[frameIndex % colors.length],
-        theme: themes[frameIndex % themes.length],
-        img: images[i]
+        position: position.pos,
+        rotation: position.rot,
+        size: [1.0 + Math.random() * 0.3, 0.8 + Math.random() * 0.4],
+        color: colors[i % colors.length],
+        img: images[i] // Use the actual loaded image texture
       });
-      frameIndex++;
-    }
-    
-    // Left wall frames - evenly spaced along depth
-    const leftWallFrames = framesPerWall + (extraFrames > 1 ? 1 : 0);
-    for (let i = 0; i < leftWallFrames; i++) {
-      const spacing = 10 / (leftWallFrames + 1); // Distribute across 10 units depth
-      const zPos = -5 + spacing * (i + 1); // Start from -5 and space evenly
-      
-      frames.push({
-        position: [
-          -6.8 + Math.random() * 0.3,
-          1.5 + Math.random() * 3, // Random height between 1.5 and 4.5
-          zPos
-        ],
-        rotation: [0, Math.PI / 2 + Math.random() * 0.2 - 0.1, 0],
-        size: [
-          0.9 + Math.random() * 0.4,
-          0.8 + Math.random() * 0.5
-        ],
-        color: colors[frameIndex % colors.length],
-        theme: themes[frameIndex % themes.length],
-        img: imageTexture
-      });
-      frameIndex++;
-    }
-    
-    // Right wall frames - evenly spaced along depth
-    const rightWallFrames = framesPerWall + (extraFrames > 2 ? 1 : 0);
-    for (let i = 0; i < rightWallFrames; i++) {
-      const spacing = 10 / (rightWallFrames + 1); // Distribute across 10 units depth
-      const zPos = -5 + spacing * (i + 1); // Start from -5 and space evenly
-      
-      frames.push({
-        position: [
-          6.8 - Math.random() * 0.3,
-          1.5 + Math.random() * 3, // Random height between 1.5 and 4.5
-          zPos
-        ],
-        rotation: [0, -Math.PI / 2 + Math.random() * 0.2 - 0.1, 0],
-        size: [
-          0.9 + Math.random() * 0.4,
-          0.8 + Math.random() * 0.5
-        ],
-        color: colors[frameIndex % colors.length],
-        theme: themes[frameIndex % themes.length],
-        img: imageTexture
-      });
-      frameIndex++;
-    }
-    
-    // Front wall frames - evenly spaced horizontally (behind camera view)
-    const frontWallFrames = framesPerWall + (extraFrames > 3 ? 1 : 0);
-    for (let i = 0; i < frontWallFrames; i++) {
-      const spacing = 8 / (frontWallFrames + 1); // Distribute across 8 units width (slightly smaller for front)
-      const xPos = -4 + spacing * (i + 1); // Start from -4 and space evenly
-      
-      frames.push({
-        position: [
-          xPos,
-          1.5 + Math.random() * 3, // Random height between 1.5 and 4.5
-          6.8 - Math.random() * 0.3 // Slight depth variation (front wall)
-        ],
-        rotation: [0, Math.PI + Math.random() * 0.2 - 0.1, 0], // Face inward toward room
-        size: [
-          0.9 + Math.random() * 0.4,
-          0.8 + Math.random() * 0.5
-        ],
-        color: colors[frameIndex % colors.length],
-        theme: themes[frameIndex % themes.length],
-        img: imageTexture
-      });
-      frameIndex++;
     }
     
     return frames;
   };
 
   // Generate frames based on limited count
-  const frames = generateRandomFrames(limitedCount);
+  const frames = generateFrames(limitedCount);
 
   return (
     <group ref={frameGroupRef}>
