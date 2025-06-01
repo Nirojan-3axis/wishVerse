@@ -229,7 +229,7 @@ const VirtualCake = () => {
   const defaultCakeOptions = {
     flavor: "vanilla",
     layers: 2,
-    message: "Happy Birthday",
+    message: "Happy Birthday\nMunimmaa\n🤍",
     color: "#FF9EAA",
     candleCount: 25,
     topping: "none",

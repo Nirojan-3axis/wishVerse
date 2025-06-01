@@ -2,7 +2,12 @@ import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Text3D, Float, Sparkles, Stars } from "@react-three/drei";
 import * as THREE from "three";
-import img1 from "../../assets/img_1.jpg";
+import img1 from "../../assets/img/1.JPG";
+import img2 from "../../assets/img/2.JPG";
+import img3 from "../../assets/img/3.JPG";
+import img4 from "../../assets/img/4.JPG";
+import img5 from "../../assets/img/5.JPG";
+import img6 from "../../assets/img/6.JPG";
 
 // Party Table Component
 const PartyTable = () => {
@@ -225,8 +230,7 @@ const ImageHangers = ({ count = 6 }) => {
   const frameGroupRef = useRef();
   
   // Load the image texture
-  const imageTexture = useLoader(THREE.TextureLoader, img1);
-  
+  const images = [useLoader(THREE.TextureLoader, img1), useLoader(THREE.TextureLoader, img2), useLoader(THREE.TextureLoader, img3), useLoader(THREE.TextureLoader, img4), useLoader(THREE.TextureLoader, img5), useLoader(THREE.TextureLoader, img6)];
   // Ensure count is within limits (min: 0, max: 8)
   const limitedCount = Math.max(0, Math.min(8, count));
   
@@ -271,7 +275,7 @@ const ImageHangers = ({ count = 6 }) => {
         ],
         color: colors[frameIndex % colors.length],
         theme: themes[frameIndex % themes.length],
-        img: imageTexture
+        img: images[i]
       });
       frameIndex++;
     }
