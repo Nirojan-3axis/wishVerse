@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nirojan.github.io/web",
+  "homepage": "https://nirojan-3axis.github.io/wishVerse",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
