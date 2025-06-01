@@ -256,18 +256,17 @@ const ImageHangers = ({ count = 6 }) => {
     const frames = [];
     const colors = ["#8B4513", "#2F4F4F", "#4A4A4A", "#654321", "#696969", "#5D4037"];
     
-    // Define fixed positions for up to 6 frames around the room
+    // Define fixed positions for up to 6 frames around the room (excluding front wall)
     const positions = [
       // Back wall
       { pos: [-3, 2.5, -6.8], rot: [0, 0, 0] },
       { pos: [3, 2.5, -6.8], rot: [0, 0, 0] },
+      { pos: [0, 3.5, -6.8], rot: [0, 0, 0] },
       // Left wall  
       { pos: [-6.8, 2.5, -2], rot: [0, Math.PI / 2, 0] },
+      { pos: [-6.8, 3.5, 2], rot: [0, Math.PI / 2, 0] },
       // Right wall
-      { pos: [6.8, 2.5, -2], rot: [0, -Math.PI / 2, 0] },
-      // Additional back wall positions
-      { pos: [0, 3.5, -6.8], rot: [0, 0, 0] },
-      { pos: [-6.8, 3.5, 2], rot: [0, Math.PI / 2, 0] }
+      { pos: [6.8, 2.5, -2], rot: [0, -Math.PI / 2, 0] }
     ];
     
     for (let i = 0; i < frameCount; i++) {
