@@ -21,24 +21,9 @@ const BackgroundMusic = ({
   // Store the audio element in a ref
   const audioRef = useRef(null);
 
-  // Function to get local audio stream from microphone
-  function getLocalStream() {
-    navigator.mediaDevices
-      .getUserMedia({ video: false, audio: true })
-      .then((stream) => {
-        window.localStream = stream; // A
-        window.localAudio.srcObject = stream; // B
-        window.localAudio.autoplay = true; // C
-      })
-      .catch((err) => {
-        console.error(`you got an error: ${err}`);
-      });
-  }
-
   // Handle play/pause functionality
   useEffect(() => {
     const audio = audioRef.current;
-    //getLocalStream();
     
     if (!audio) return;
     
