@@ -209,7 +209,7 @@ const BirthdayBalloons = ({ message, position, radius, cakeOptions }) => {
         {/* Glow effect */}
         <Text
           position={[0, 0, 0]}
-          fontSize={0.32}
+          fontSize={0.24}
           characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.,;:?-+&"
           anchorX="center"
           anchorY="middle"
@@ -227,7 +227,7 @@ const BirthdayBalloons = ({ message, position, radius, cakeOptions }) => {
         {/* Colorful 3D text with user-customized styling */}
         <Text
           position={[0, 0, 0]}
-          fontSize={0.32}
+          fontSize={0.24}
           characters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!.,;:?-+&"
           color={cakeOptions.messageColor || "#FFFFFF"}
           anchorX="center"
