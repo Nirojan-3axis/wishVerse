@@ -158,7 +158,7 @@ const MicPermissionOverlay = ({ isVisible, onAccept, onDeny }) => {
               onClick={onAccept}
               className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 rounded-xl text-white font-bold shadow-lg transition-all transform hover:scale-105 hover:shadow-purple-500/25"
             >
-              Enable Magic 🎪
+              Enable Magic
             </button>
           </div>
         </div>
