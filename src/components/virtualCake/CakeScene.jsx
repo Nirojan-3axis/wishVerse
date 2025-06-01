@@ -88,8 +88,10 @@ const CakeScene = ({ cakeOptions, candlesLit = true }) => {
         maxDistance={12} 
         autoRotate={true} 
         autoRotateSpeed={0.5}
-        minPolarAngle={Math.PI / 6}
-        maxPolarAngle={Math.PI / 2.2}
+        minPolarAngle={Math.PI / 4}
+        maxPolarAngle={Math.PI / 2.5}
+        minAzimuthAngle={-Math.PI / 3}
+        maxAzimuthAngle={Math.PI / 3}
       />
     </>
   );
