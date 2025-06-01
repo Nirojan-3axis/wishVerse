@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import CakeScene from "../../components/virtualCake/CakeScene";
 import Confetti from "../../components/virtualCake/Confetti";
 import BackgroundMusic from "../../components/music/BackgroundMusic";
+import musicFile from "../../assets/music.mp3";
 
 // Modern Control Panel Component
 const ControlPanel = ({ micPermission, candlesLit, onResetCandles, blowDetected }) => {
@@ -189,10 +190,10 @@ const CelebrationOverlay = ({ isVisible, onReset, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center lg:p-4 p-2 h-full overflow-scroll">
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4">
       {/* Background Music for Celebration */}
       <BackgroundMusic 
-        src="/src/assets/music.mp3" 
+        src={musicFile} 
         autoPlay={celebrationMusic}
       />
       
@@ -444,7 +445,7 @@ const VirtualCake = () => {
       </div>
 
       <BackgroundMusic 
-        src="/src/assets/music.mp3" 
+        src={musicFile} 
         autoPlay={playMusic}
       />
 
