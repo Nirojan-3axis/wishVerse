@@ -287,6 +287,7 @@ const VirtualCake = () => {
   const [micPermission, setMicPermission] = useState(null);
   const [candlesLit, setCandlesLit] = useState(true);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [showCelebration, setShowCelebration] = useState(false);
   const [blowDetected, setBlowDetected] = useState(false);
   const [audioContext, setAudioContext] = useState(null);
   const [microphoneStream, setMicrophoneStream] = useState(null);
@@ -427,6 +428,12 @@ const VirtualCake = () => {
             setShowConfetti(true);
             // Start birthday music when candles are blown out
             playBirthdayMusic();
+            
+            // Show celebration overlay after 2 seconds
+            setTimeout(() => {
+              setShowCelebration(true);
+            }, 3000);
+            
             blowTimer = null;
           }, 300);
         }
@@ -449,6 +456,7 @@ const VirtualCake = () => {
   const handleResetCandles = () => {
     setCandlesLit(true);
     setShowConfetti(false);
+    setShowCelebration(false);
     setBlowDetected(false);
     // Stop music when resetting candles
     stopBirthdayMusic();
@@ -456,7 +464,7 @@ const VirtualCake = () => {
 
   // Handle closing celebration modal
   const handleCloseCelebration = () => {
-    setCandlesLit(true);
+    setShowCelebration(false);
     // Keep music playing even when modal is closed
   };
 
@@ -526,7 +534,7 @@ const VirtualCake = () => {
       />
 
       <CelebrationOverlay 
-        isVisible={!candlesLit}
+        isVisible={showCelebration}
         onReset={handleResetCandles}
         onClose={handleCloseCelebration}
       />
