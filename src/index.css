@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme{
+  /* Colors */
+  --color-primary: #5C2E91;      /* Royal Plum - Bold luxury feel for CTAs and key sections */
+  --color-accent-1: #E7C36F;     /* Champagne Gold - For borders, icons, highlights */
+  --color-accent-2: #F8D9E0;     /* Blush Rose - For backgrounds or avatar skins */
+  --color-background: #FDF8F5;   /* Soft Ivory - Clean, premium backdrop */
+  --color-dark-mode: #1F1F1F;    /* Midnight Charcoal - For dark theme or overlays */
+  --color-text-main: #2C2C2C;    /* Charcoal Black - For main text, high contrast */
+  --color-text-secondary: #757575; /* Ash Grey - For subtitles and UI hints */
+  
+  /* Fonts */
+  --font-doto: Doto, "sans-serif";
+  --font-playwrite-au: Playwrite AU TAS, "sans-serif";
+}
+
+/* Only keeping minimal root styles that won't conflict with Tailwind */
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(247, 243, 248, 0.7);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-primary), #8E24AA);
+  border-radius: 10px;
+  border: 2px solid rgba(247, 243, 248, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #5C2E91, #9C27B0);
+  cursor: pointer;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(247, 243, 248, 0.7);
+}
