@@ -10,15 +10,17 @@ const ControlPanel = ({ micPermission, candlesLit, onResetCandles, blowDetected 
 
   return (
     <div className="absolute top-6 right-6 z-30">
-      <div className={`bg-black/20 backdrop-blur-xl rounded-2xl border border-white/10 transition-all duration-300 ${
-        isExpanded ? 'p-6 w-80' : 'p-4 w-16'
-      }`}>
+      <div
+        className={`bg-black/20 backdrop-blur-xl rounded-2xl border border-white/10 transition-all duration-300 ${
+          isExpanded ? "p-6 w-80" : "p-4 w-16"
+        }`}
+      >
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white hover:scale-110 transition-transform"
         >
           <svg
-            className={`w-5 h-5 transition-transform ${isExpanded ? 'rotate-45' : ''}`}
+            className={`w-5 h-5 transition-transform ${isExpanded ? "rotate-45" : ""}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -31,20 +33,18 @@ const ControlPanel = ({ micPermission, candlesLit, onResetCandles, blowDetected 
           <div className="mt-4 space-y-4">
             <div className="text-white">
               <h3 className="font-bold text-lg mb-3">Cake Controls</h3>
-              
+
               {/* Microphone Status */}
               <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg mb-3">
                 <span className="text-sm">Microphone</span>
-                <div className={`w-3 h-3 rounded-full ${
-                  micPermission ? 'bg-green-400 animate-pulse' : 'bg-red-400'
-                }`}></div>
+                <div className={`w-3 h-3 rounded-full ${micPermission ? "bg-green-400 animate-pulse" : "bg-red-400"}`}></div>
               </div>
 
               {/* Candles Status */}
               <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg mb-3">
                 <span className="text-sm">Candles</span>
                 <span className="text-xs px-2 py-1 rounded-full bg-gradient-to-r from-orange-400 to-yellow-400 text-black font-medium">
-                  {candlesLit ? 'Lit 🕯️' : 'Out 💨'}
+                  {candlesLit ? "Lit 🕯️" : "Out 💨"}
                 </span>
               </div>
 
@@ -60,16 +60,16 @@ const ControlPanel = ({ micPermission, candlesLit, onResetCandles, blowDetected 
 
               {/* Blow Detection Indicator */}
               {micPermission && candlesLit && (
-                <div className={`p-3 rounded-lg border transition-all ${
-                  blowDetected 
-                    ? 'bg-green-500/20 border-green-400 text-green-300' 
-                    : 'bg-blue-500/20 border-blue-400 text-blue-300'
-                }`}>
+                <div
+                  className={`p-3 rounded-lg border transition-all ${
+                    blowDetected
+                      ? "bg-green-500/20 border-green-400 text-green-300"
+                      : "bg-blue-500/20 border-blue-400 text-blue-300"
+                  }`}
+                >
                   <div className="flex items-center">
-                    <span className="mr-2">{blowDetected ? '💨' : '🎤'}</span>
-                    <span className="text-sm">
-                      {blowDetected ? 'Blowing detected!' : 'Listening...'}
-                    </span>
+                    <span className="mr-2">{blowDetected ? "💨" : "🎤"}</span>
+                    <span className="text-sm">{blowDetected ? "Blowing detected!" : "Listening..."}</span>
                   </div>
                 </div>
               )}
@@ -108,7 +108,7 @@ const MicPermissionOverlay = ({ isVisible, onAccept, onDeny }) => {
                   />
                 </svg>
               </div>
-              
+
               {/* Floating elements */}
               <div className="absolute -top-2 -right-2 w-8 h-8 bg-green-400 rounded-full flex items-center justify-center text-white animate-bounce">
                 ✓
@@ -121,9 +121,7 @@ const MicPermissionOverlay = ({ isVisible, onAccept, onDeny }) => {
           <h2 className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
             Make a Wish! 🌟
           </h2>
-          <p className="text-gray-300 text-center mb-8 text-lg leading-relaxed">
-            Enable your microphone!
-          </p>
+          <p className="text-gray-300 text-center mb-8 text-lg leading-relaxed">Enable your microphone!</p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -154,35 +152,40 @@ const CelebrationOverlay = ({ isVisible, onReset, onClose }) => {
       <div className="bg-gradient-to-br from-[#1A1A2E]/95 to-[#2A2A45]/95 backdrop-blur-xl max-w-2xl w-full max-h-[95vh] overflow-y-auto rounded-2xl sm:rounded-3xl shadow-2xl border border-white/20 transform transition-all animate-bounce-in">
         {/* Header with close button */}
         <div className="relative p-4 sm:p-8 pb-2 sm:pb-4">
-          
           {/* Animated celebration icons */}
           <div className="flex justify-center mb-2">
             <div className="relative">
               <div className="text-5xl sm:text-8xl mb-2 sm:mb-4 animate-pulse">🎉</div>
               <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 text-2xl sm:text-4xl animate-bounce">✨</div>
-              <div className="absolute -bottom-1 sm:-bottom-2 -left-1 sm:-left-2 text-xl sm:text-3xl animate-bounce delay-300">🌟</div>
+              <div className="absolute -bottom-1 sm:-bottom-2 -left-1 sm:-left-2 text-xl sm:text-3xl animate-bounce delay-300">
+                🌟
+              </div>
               <div className="absolute top-1/2 -right-4 sm:-right-8 text-lg sm:text-2xl animate-ping">💫</div>
             </div>
           </div>
-          
+
           <h1 className="text-xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent text-center leading-tight">
-            🎂 Happy Birthday! 🎂
+            🎂 Happy Birthday munimmaaaa! 🎂
           </h1>
+          <h2 className="text-md sm:text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent text-center leading-tight">
+            🤍 Love You d eh Alagu Pondadi 😘
+          </h2>
         </div>
 
         {/* Main content */}
         <div className="px-4 sm:px-8 pb-4 sm:pb-8">
           <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-8 border border-white/10">
-            
             <div className="text-sm sm:text-lg text-gray-200 leading-relaxed space-y-2 sm:space-y-4 text-center">
               <p>
-                🎈 May this special day bring you endless joy, laughter, and beautiful memories that will last a lifetime. 
+                🎈 Happy Birthday, my dearest Munimmaa! May this special day bring you endless joy, sweet laughter, and magical
+                memories that we'll cherish forever.
               </p>
               <p>
-                ✨ As you blow out these virtual candles, may all your dreams take flight and your heart be filled with happiness, love, and wonder.
+                ✨ As you blow out these virtual candles, I wish that all your dreams take flight and your heart overflows with
+                love, happiness, and wonder, just like you fill mine every day.
               </p>
               <p className="text-base sm:text-xl font-medium text-yellow-300">
-                🎉 Happy Birthday, and may all your wishes come true! 🎂
+                🎉 Happy Birthday, Munimmaa! You mean the world to me - may all your beautiful wishes come true! 🎂❤️
               </p>
             </div>
           </div>
@@ -217,17 +220,17 @@ const StatusIndicator = ({ micPermission, candlesLit, blowDetected }) => {
 
   return (
     <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-30 px-4 w-full max-w-md">
-      <div className={`px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
-        blowDetected 
-          ? 'bg-green-500/20 border-green-400/50 text-green-300' 
-          : 'bg-blue-500/20 border-blue-400/50 text-blue-300'
-      }`}>
+      <div
+        className={`px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl backdrop-blur-xl border transition-all duration-300 ${
+          blowDetected ? "bg-green-500/20 border-green-400/50 text-green-300" : "bg-blue-500/20 border-blue-400/50 text-blue-300"
+        }`}
+      >
         <div className="flex items-center justify-center space-x-2 sm:space-x-3">
-          <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse ${
-            blowDetected ? 'bg-green-400' : 'bg-blue-400'
-          }`}></div>
+          <div
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full animate-pulse ${blowDetected ? "bg-green-400" : "bg-blue-400"}`}
+          ></div>
           <span className="font-medium text-sm sm:text-base text-center">
-            {blowDetected ? 'Blowing detected!' : 'Blow to extinguish candles'}
+            {blowDetected ? "Blowing detected!" : "Blow to extinguish candles"}
           </span>
         </div>
       </div>
@@ -251,7 +254,7 @@ const VirtualCake = () => {
     strokeColor: "#FF90E8",
     strokeWidth: 0.01,
     balloonCount: 12,
-    zoom:false
+    zoom: false,
   };
 
   // State for microphone permission and audio processing
@@ -292,7 +295,7 @@ const VirtualCake = () => {
         await audioRef.current.play();
         setIsPlaying(true);
       } catch (error) {
-        console.error('Failed to play birthday music:', error);
+        console.error("Failed to play birthday music:", error);
       }
     }
   };
@@ -386,7 +389,7 @@ const VirtualCake = () => {
       const lowFreqAvg = lowFreqSum / lowFreqEnd;
 
       // Detect blow - adjusting threshold for sensitivity
-      if (lowFreqAvg > 140) {
+      if (lowFreqAvg > 100) {
         // Adjust this threshold as needed
         consecutiveBlowFrames++;
 
@@ -400,12 +403,12 @@ const VirtualCake = () => {
             setShowConfetti(true);
             // Start birthday music when candles are blown out
             playBirthdayMusic();
-            
+
             // Show celebration overlay after 2 seconds
             setTimeout(() => {
               setShowCelebration(true);
             }, 3000);
-            
+
             blowTimer = null;
           }, 300);
         }
@@ -468,19 +471,25 @@ const VirtualCake = () => {
           <button
             onClick={toggleMusic}
             className={`w-12 h-12 rounded-full ${
-              isPlaying 
-                ? 'bg-gradient-to-r from-purple-500 to-pink-500' 
-                : 'bg-gradient-to-r from-gray-500 to-blue-400'
+              isPlaying ? "bg-gradient-to-r from-purple-500 to-pink-500" : "bg-gradient-to-r from-gray-500 to-blue-400"
             } text-white flex items-center justify-center shadow-lg hover:opacity-90 transition-all duration-300 hover:scale-105`}
-            aria-label={isPlaying ? 'Pause Music' : 'Play Music'}
+            aria-label={isPlaying ? "Pause Music" : "Play Music"}
           >
             {isPlaying ? (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z"
+                  clipRule="evenodd"
+                />
               </svg>
             ) : (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z"
+                  clipRule="evenodd"
+                />
               </svg>
             )}
           </button>
@@ -492,33 +501,17 @@ const VirtualCake = () => {
 
       {/* Main 3D Scene */}
       <div className="w-full h-full">
-        <Canvas 
-          camera={{ position: [0, 3, 8], fov: 50 }} 
-          gl={{ antialias: true, alpha: true }}
-          shadows
-        >
+        <Canvas camera={{ position: [0, 3, 8], fov: 50 }} gl={{ antialias: true, alpha: true }} shadows>
           <CakeScene cakeOptions={defaultCakeOptions} candlesLit={candlesLit} />
         </Canvas>
       </div>
 
       {/* Modern UI Components */}
-      <StatusIndicator 
-        micPermission={micPermission}
-        candlesLit={candlesLit}
-        blowDetected={blowDetected}
-      />
+      <StatusIndicator micPermission={micPermission} candlesLit={candlesLit} blowDetected={blowDetected} />
 
-      <CelebrationOverlay 
-        isVisible={showCelebration}
-        onReset={handleResetCandles}
-        onClose={handleCloseCelebration}
-      />
+      <CelebrationOverlay isVisible={showCelebration} onReset={handleResetCandles} onClose={handleCloseCelebration} />
 
-      <MicPermissionOverlay 
-        isVisible={showMicPermissionOverlay} 
-        onAccept={handleAcceptMic} 
-        onDeny={handleDenyMic} 
-      />
+      <MicPermissionOverlay isVisible={showMicPermissionOverlay} onAccept={handleAcceptMic} onDeny={handleDenyMic} />
 
       {/* Enhanced animations */}
       <style jsx="true">{`
