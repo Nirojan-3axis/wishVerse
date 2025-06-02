@@ -444,12 +444,15 @@ const VirtualCake = () => {
   const handleAcceptMic = async () => {
     setShowMicPermissionOverlay(false);
     setMicPermission(true);
+    // Start background music when user enables microphone
+    playBirthdayMusic();
   };
 
   const handleDenyMic = () => {
     setShowMicPermissionOverlay(false);
     setMicPermission(false);
-    setPlayMusic(true);
+    // Start background music when user skips microphone permission
+    playBirthdayMusic();
   };
 
   return (
