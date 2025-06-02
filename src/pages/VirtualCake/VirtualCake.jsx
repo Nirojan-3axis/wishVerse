@@ -122,30 +122,8 @@ const MicPermissionOverlay = ({ isVisible, onAccept, onDeny }) => {
             Make a Wish! 🌟
           </h2>
           <p className="text-gray-300 text-center mb-8 text-lg leading-relaxed">
-            Enable your microphone to blow out the virtual candles and make your birthday wishes come true!
+            Enable your microphone!
           </p>
-
-          {/* Feature highlights */}
-          <div className="grid grid-cols-3 gap-4 mb-8">
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-2">
-                <span className="text-2xl">🎯</span>
-              </div>
-              <span className="text-xs text-green-400 font-medium">Interactive</span>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-2">
-                <span className="text-2xl">🔒</span>
-              </div>
-              <span className="text-xs text-blue-400 font-medium">Secure</span>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-2">
-                <span className="text-2xl">✨</span>
-              </div>
-              <span className="text-xs text-purple-400 font-medium">Magical</span>
-            </div>
-          </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -162,12 +140,6 @@ const MicPermissionOverlay = ({ isVisible, onAccept, onDeny }) => {
             </button>
           </div>
         </div>
-
-        <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 py-4 px-8 text-center border-t border-white/5">
-          <p className="text-xs text-gray-400">
-            🛡️ We only use your microphone to detect blowing sounds for cake interaction
-          </p>
-        </div>
       </div>
     </div>
   );
@@ -178,48 +150,48 @@ const CelebrationOverlay = ({ isVisible, onReset, onClose }) => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4">
-      <div className="bg-gradient-to-br from-[#1A1A2E]/95 to-[#2A2A45]/95 backdrop-blur-xl max-w-2xl w-full rounded-3xl overflow-hidden shadow-2xl border border-white/20 transform transition-all animate-bounce-in">
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-gradient-to-br from-[#1A1A2E]/95 to-[#2A2A45]/95 backdrop-blur-xl max-w-2xl w-full max-h-[95vh] overflow-y-auto rounded-2xl sm:rounded-3xl shadow-2xl border border-white/20 transform transition-all animate-bounce-in">
         {/* Header with close button */}
-        <div className="relative p-8 pb-4">
+        <div className="relative p-4 sm:p-8 pb-2 sm:pb-4">
           
           {/* Animated celebration icons */}
           <div className="flex justify-center mb-2">
             <div className="relative">
-              <div className="text-8xl mb-4 animate-pulse">🎉</div>
-              <div className="absolute -top-2 -right-2 text-4xl animate-bounce">✨</div>
-              <div className="absolute -bottom-2 -left-2 text-3xl animate-bounce delay-300">🌟</div>
-              <div className="absolute top-1/2 -right-8 text-2xl animate-ping">💫</div>
+              <div className="text-5xl sm:text-8xl mb-2 sm:mb-4 animate-pulse">🎉</div>
+              <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 text-2xl sm:text-4xl animate-bounce">✨</div>
+              <div className="absolute -bottom-1 sm:-bottom-2 -left-1 sm:-left-2 text-xl sm:text-3xl animate-bounce delay-300">🌟</div>
+              <div className="absolute top-1/2 -right-4 sm:-right-8 text-lg sm:text-2xl animate-ping">💫</div>
             </div>
           </div>
           
-          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent text-center leading-tight">
+          <h1 className="text-xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 bg-clip-text text-transparent text-center leading-tight">
             🎂 Happy Birthday! 🎂
           </h1>
         </div>
 
         {/* Main content */}
-        <div className="px-8 pb-8">
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl p-6 mb-8 border border-white/10">
+        <div className="px-4 sm:px-8 pb-4 sm:pb-8">
+          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-8 border border-white/10">
             
-            <div className="text-lg text-gray-200 leading-relaxed space-y-4 text-center">
+            <div className="text-sm sm:text-lg text-gray-200 leading-relaxed space-y-2 sm:space-y-4 text-center">
               <p>
                 🎈 May this special day bring you endless joy, laughter, and beautiful memories that will last a lifetime. 
               </p>
               <p>
                 ✨ As you blow out these virtual candles, may all your dreams take flight and your heart be filled with happiness, love, and wonder.
               </p>
-              <p className="text-xl font-medium text-yellow-300">
+              <p className="text-base sm:text-xl font-medium text-yellow-300">
                 🎉 Happy Birthday, and may all your wishes come true! 🎂
               </p>
             </div>
           </div>
 
           {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-4 bg-gray-800/50 hover:bg-gray-700/50 rounded-xl text-gray-300 font-medium transition-all transform hover:scale-105 border border-gray-600/50"
+              className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gray-800/50 hover:bg-gray-700/50 rounded-lg sm:rounded-xl text-gray-300 font-medium transition-all transform hover:scale-105 border border-gray-600/50 text-sm sm:text-base"
             >
               Close
             </button>
@@ -228,7 +200,7 @@ const CelebrationOverlay = ({ isVisible, onReset, onClose }) => {
                 onReset();
                 onClose && onClose();
               }}
-              className="flex-1 px-6 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 rounded-xl text-white font-bold shadow-lg transition-all transform hover:scale-105 hover:shadow-purple-500/25"
+              className="w-full px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 rounded-lg sm:rounded-xl text-white font-bold shadow-lg transition-all transform hover:scale-105 hover:shadow-purple-500/25 text-sm sm:text-base"
             >
               Light Candles Again ✨
             </button>
